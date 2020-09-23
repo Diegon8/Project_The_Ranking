@@ -6,6 +6,7 @@ import requests
 import re
 import math
 import itertools
+from pymongo import MongoClient
 
 
 #Function that extracts gross data from GitHub API
@@ -75,3 +76,15 @@ def getDataDict(npages):
         pulls.append(extractWantedData(getRequests("/repos/ironhack-datalabs/datamad0820/pulls",query_params={'state': 'all', 'page' : i, "per_page":100})))
     clean_data = list(itertools.chain.from_iterable(pulls))
     return clean_data
+
+
+#Function to import all pull dictionaries to MongoDB
+def Import_to_mongoDB(lista):
+    """Upload the info extractred from github to mongodb"""
+    client = MongoClient(port=27017)
+    db=client.RankingDB
+    for x in range(0,len(lista)):
+        result = db.pulls.insert_one(lista[x])
+    print(f'finished creating {len(lista)} pull requests')
+
+
