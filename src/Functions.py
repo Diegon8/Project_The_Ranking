@@ -37,7 +37,7 @@ def extractWantedData(data):
     for x in range(0,len(data)):
         try:
             name={'number':data[x]['number'],
-            'title':re.match('\[(.*?)\]',data[x]['title'],re.IGNORECASE).group(1).replace('-',' '),
+            'title':re.match('\[(.*?)\]',data[x]['title'],re.IGNORECASE).group(1),
             'user':data[x]['user']['login'],
             'state':data[x]['state'],
             'created_at':data[x]['created_at'],
@@ -51,7 +51,7 @@ def extractWantedData(data):
     
         except:
             name={'number':data[x]['number'],
-            'title':re.match('\[(.*?)\]',data[x-1]['title'],re.IGNORECASE).group(1).replace('-',' '),
+            'title':re.match('\[(.*?)\]',data[x-1]['title'],re.IGNORECASE).group(1),
             'user':data[x]['user']['login'],
             'state':data[x]['state'],
             'created_at':data[x]['created_at'],
