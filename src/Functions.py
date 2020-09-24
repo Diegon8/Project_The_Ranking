@@ -43,6 +43,7 @@ def extractWantedData(data):
             'created_at':data[x]['created_at'],
             'updated_at':data[x]['updated_at'],
             'closed_at':data[x]['closed_at'],
+            'TA':data[x]['assignee']['login'],
             'html_url':data[x]['html_url'],
             'meme':'no'
             }
@@ -56,6 +57,7 @@ def extractWantedData(data):
             'created_at':data[x]['created_at'],
             'updated_at':data[x]['updated_at'],
             'closed_at':data[x]['closed_at'],
+            'TA':'none',
             'html_url':data[x]['html_url'],
             'meme':'no'
             }
