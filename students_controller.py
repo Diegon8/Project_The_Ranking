@@ -9,7 +9,7 @@ from src.database import db
 @asJsonResponse
 
 def search_students():
-    """display all Ironhack users from datamad0820"""
+    'display all users from datamad0820'
 
     students = db.users.find({}, {'_id': False})
 
